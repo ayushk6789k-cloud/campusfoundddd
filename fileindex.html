@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find & Found | Campus Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #243047;
+}
+
+header {
+    background: #243b67;
+    color: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+header h1 {
+    font-size: 27px;
+}
+
+header p {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #dbe5ff;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(120deg, #243b67, #4979bb);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: #ffca58;
+    color: #243047;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #ffb927;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 25px 15px;
+}
+
+.stat {
+    background: white;
+    padding: 20px 35px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #0000000d;
+    min-width: 150px;
+}
+
+.stat h3 {
+    color: #315da0;
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+section {
+    padding: 35px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #64748b;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd5e3;
+    border-radius: 6px;
+    font-size: 15px;
+    background: white;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-box select {
+    width: 180px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.item-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #e1e7f0;
+    box-shadow: 0 3px 10px #00000008;
+}
+
+.item-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.item-card h3 {
+    margin-bottom: 12px;
+}
+
+.item-card p {
+    margin: 9px 0;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #e1edff;
+    color: #28549a;
+    margin-bottom: 12px;
+}
+
+.tag.found {
+    background: #d9f8e5;
+    color: #187346;
+}
+
+.contact {
+    margin-top: 14px;
+    padding: 10px;
+    background: #f0f5ff;
+    border-radius: 6px;
+    overflow-wrap: anywhere;
+}
+
+.report {
+    background: #eaf0f9;
+}
+
+.form-box {
+    background: white;
+    max-width: 650px;
+    margin: auto;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #0000000c;
+}
+
+.form-box label {
+    display: block;
+    font-weight: bold;
+    margin: 14px 0 7px;
+}
+
+.form-box .btn {
+    margin-top: 20px;
+    width: 100%;
+}
+
+footer {
+    background: #243b67;
+    color: white;
+    text-align: center;
+    padding: 24px;
+    line-height: 1.8;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px;
+    color: #64748b;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-right: 12px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    section {
+        padding: 30px 18px;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>🔎 Find & Found</h1>
+        <p>Campus Lost and Found Portal</p>
+    </div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#items">Find Items</a>
+        <a href="#report">Report Item</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h2>Lost Something on Campus?</h2>
+    <p>Help your campus community reconnect with lost belongings.</p>
+    <a href="#report" class="btn">Report an Item</a>
+</div>
+
+<div class="stats">
+    <div class="stat">
+        <h3 id="totalCount">4</h3>
+        <p>Total Reports</p>
+    </div>
+    <div class="stat">
+        <h3 id="lostCount">2</h3>
+        <p>Lost Items</p>
+    </div>
+    <div class="stat">
+        <h3 id="foundCount">2</h3>
+        <p>Found Items</p>
+    </div>
+</div>
+
+<section id="items">
+    <div class="section-title">
+        <h2>Browse Campus Reports</h2>
+        <p>Search for belongings reported by other students.</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="search"
+               placeholder="Search items, locations..."
+               oninput="displayItems()">
+
+        <select id="filter" onchange="displayItems()">
+            <option value="All">All Reports</option>
+            <option value="Lost">Lost Items</option>
+            <option value="Found">Found Items</option>
+        </select>
+    </div>
+
+    <div class="items" id="itemList"></div>
+</section>
+
+<section class="report" id="report">
+    <div class="section-title">
+        <h2>Report a Lost or Found Item</h2>
+        <p>Fill in the details to help someone find their belongings.</p>
+    </div>
+
+    <div class="form-box">
+        <form id="reportForm">
+            <label for="itemName">Item Name</label>
+            <input type="text" id="itemName"
+                   placeholder="e.g. Blue Water Bottle" required>
+
+            <label for="type">Report Type</label>
+            <select id="type" required>
+                <option value="Lost">Lost Item</option>
+                <option value="Found">Found Item</option>
+            </select>
+
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="Electronics">Electronics</option>
+                <option value="Books">Books</option>
+                <option value="Bags">Bags</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="location">Last Seen / Found Location</label>
+            <input type="text" id="location"
+                   placeholder="e.g. College Library" required>
+
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" rows="3"
+                      placeholder="Describe the item..." required></textarea>
+
+            <label for="contact">Contact Email</label>
+            <input type="email" id="contact"
+                   placeholder="student@example.com" required>
+
+            <button type="submit" class="btn">Submit Report</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <h3>🔎 Find & Found</h3>
+    <p>Making campus life easier, one lost item at a time.</p>
+    <p>© 2026 Campus Lost and Found Portal</p>
+</footer>
+
+<script>
+const defaultItems = [
+    {
+        name: "Black Wallet",
+        type: "Lost",
+        category: "Accessories",
+        location: "College Library",
+        date: "2026-10-25",
+        description: "Small black wallet with student cards.",
+        contact: "student1@example.com"
+    },
+    {
+        name: "Blue Backpack",
+        type: "Lost",
+        category: "Bags",
+        location: "Computer Lab",
+        date: "2026-10-24",
+        description: "Blue bag containing notebooks.",
+        contact: "student2@example.com"
+    },
+    {
+        name: "Wireless Earbuds",
+        type: "Found",
+        category: "Electronics",
+        location: "College Canteen",
+        date: "2026-10-25",
+        description: "White wireless earbuds in a case.",
+        contact: "student3@example.com"
+    },
+    {
+        name: "Mathematics Book",
+        type: "Found",
+        category: "Books",
+        location: "Classroom 204",
+        date: "2026-10-26",
+        description: "Mathematics textbook left on a desk.",
+        contact: "student4@example.com"
+    }
+];
+
+let reports;
+
+try {
+    const saved = localStorage.getItem("campusReports");
+    reports = saved ? JSON.parse(saved) : defaultItems;
+    if (!Array.isArray(reports)) reports = defaultItems;
+} catch (error) {
+    reports = defaultItems;
+}
+
+function saveReports() {
+    try {
+        localStorage.setItem("campusReports", JSON.stringify(reports));
+    } catch (error) {
+        // Reports remain available during the current page session.
+    }
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, function (char) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[char];
+    });
+}
+
+function displayItems() {
+    const query = document.getElementById("search").value.toLowerCase();
+    const filter = document.getElementById("filter").value;
+
+    const filtered = reports.filter(function (item) {
+        const text = [
+            item.name, item.category, item.location, item.description
+        ].join(" ").toLowerCase();
+
+        return text.includes(query) &&
+               (filter === "All" || item.type === filter);
+    });
+
+    const list = document.getElementById("itemList");
+
+    document.getElementById("totalCount").textContent = reports.length;
+    document.getElementById("lostCount").textContent =
+        reports.filter(item => item.type === "Lost").length;
+    document.getElementById("foundCount").textContent =
+        reports.filter(item => item.type === "Found").length;
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty">No matching items found.</div>';
+        return;
+    }
+
+    list.innerHTML = filtered.map(function (item) {
+        const icon = {
+            Electronics: "🎧",
+            Books: "📚",
+            Bags: "🎒",
+            Clothing: "👕",
+            Accessories: "👛",
+            Other: "📦"
+        }[item.category] || "📦";
+
+        const typeClass = item.type === "Found" ? "found" : "";
+
+        return `
+            <div class="item-card">
+                <div class="item-icon">${icon}</div>
+                <span class="tag ${typeClass}">
+                    ${escapeHTML(item.type)}
+                </span>
+                <h3>${escapeHTML(item.name)}</h3>
+                <p><strong>Category:</strong> ${escapeHTML(item.category)}</p>
+                <p><strong>Location:</strong> ${escapeHTML(item.location)}</p>
+                <p><strong>Date:</strong> ${escapeHTML(item.date)}</p>
+                <p>${escapeHTML(item.description)}</p>
+                <div class="contact">
+                    <strong>Contact:</strong><br>
+                    <a href="mailto:${encodeURIComponent(item.contact)}">
+                        ${escapeHTML(item.contact)}
+                    </a>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+document.getElementById("reportForm").addEventListener("submit",
+    function (event) {
+        event.preventDefault();
+
+        const newItem = {
+            name: document.getElementById("itemName").value.trim(),
+            type: document.getElementById("type").value,
+            category: document.getElementById("category").value,
+            location: document.getElementById("location").value.trim(),
+            date: document.getElementById("date").value,
+            description: document.getElementById("description").value.trim(),
+            contact: document.getElementById("contact").value.trim()
+        };
+
+        if (Object.values(newItem).some(value => !value)) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        reports.unshift(newItem);
+        saveReports();
+        displayItems();
+
+        document.getElementById("reportForm").reset();
+        document.getElementById("items").scrollIntoView({
+            behavior: "smooth"
+        });
+
+        alert("Your report has been submitted successfully!");
+    }
+);
+
+displayItems();
+</script>
+
+</body>
+</html>
